@@ -136,7 +136,7 @@ if (availableBalance === null) {
   let initialBalance;
 
   do {
-    initialBalance = prompt("Please enter your monthly budget (1-25000 INR");
+    initialBalance = prompt("Please enter your monthly budget (1-25000 INR)");
 
     if (initialBalance === null) {
       continue; // Keep asking if user cancels
