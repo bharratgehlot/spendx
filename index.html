@@ -1,4 +1,4 @@
-<!--Spend-X is a financial accountant tool that managees all of the users spending, debt, and reporting-->
+<!--SpendX is a financial accountant tool that managees all of the users spending, debt, and reporting-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Spendx is a personal finance tracker to manage expenses, income, budgets, and savings."
+      content="SpendX is a personal finance tracker to manage expenses, income, budgets, and savings."
     />
-    <title>Spendx - Personal Finance Tracker</title>
+    <title>SpendX - Personal Finance Tracker</title>
 
     <link
       rel="apple-touch-icon"
@@ -32,7 +32,7 @@
 
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Google tag for analysis purpose (disabled on localhost) -->
 
@@ -71,7 +71,7 @@
         </button>
       </div>
 
-      <h1>Spend-X</h1>
+      <h1>SpendX</h1>
       <div class="bal-container">
         <div class="balance-box">
           Bal: <span id="availableBalance"></span> Rs
@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <!-- <a href="" class="awesome-month">Goodbye 2025 / Welcome 2026</a>-->
+      <a href="" class="app_notification">App Level Notification</a>
 
       <form id="expenseForm">
         <label for="userName">Name:</label>
@@ -111,8 +111,14 @@
           <option value="Donations">Donations</option>
         </select>
 
-        <input type="submit" value="Add Expense" />
+       <!-- <input type="submit" value="Add Expense" />-->
+
+        <button type="submit" id="submitButton" class="submit-btn">
+          Add Expense
+        </button>
+    
       </form>
+
       <p
         id="successMessage"
         style="
@@ -127,14 +133,13 @@
 
       <button
         class="past-expenses-btn"
-        onclick="window.location.href='expenses.html';"
-      >
+        onclick="window.location.href='expenses.html';">
         Past Expenses</button
       ><br />
 
       <div class="link-container">
         <a href="articles/dynamic_test.html" class="todaysread">Today's Read</a>
-        <a href="/Budget_Planner/budget_planner.html" class="Budget_Planner"
+        <a href="Budget_Planner/budget_planner.html" class="Budget_Planner"
           >Budget Planner</a
         >
       </div>

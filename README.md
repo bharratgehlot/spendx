@@ -1,6 +1,6 @@
-# Spendwise
+# SpendX
 
-Spendwise is a simple personal expense tracker designed to help individuals monitor and manage their daily spending. It offers a minimal and intuitive interface, making it easy for users to log, categorize, and review their expenses.
+SpendX is a simple personal expense tracker designed to help individuals monitor and manage their daily spending. It offers a minimal and intuitive interface, making it easy for users to log, categorize, and review their expenses.
 
 ## Features
 
