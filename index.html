@@ -1,11 +1,16 @@
-<!--Spendwise is a financial accountant tool that managees all of the users spending, debt, and reporting-->
+<!--Spend-X is a financial accountant tool that managees all of the users spending, debt, and reporting-->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spendwise - A Financial Accountant Tool</title>
+    <meta
+      name="description"
+      content="Spendx is a personal finance tracker to manage expenses, income, budgets, and savings."
+    />
+    <title>Spendx - Personal Finance Tracker</title>
+
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -23,13 +28,14 @@
       sizes="16x16"
       href="favicon/favicon-16x16.png"
     />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="stylesheet" href="index.css" />
 
-    <!-- Google tag for analysis purpose -->
-    <!-- New Update but for december -->
+    <!-- Google tag for analysis purpose (disabled on localhost) -->
+
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-G0Y921MTGZ"
@@ -37,10 +43,7 @@
 
     <script>
       const localhosts = ["localhost", "127.0.0.1", "127.0.0.2"];
-
       if (!localhosts.includes(window.location.hostname)) {
-        // GA4 Tracking code
-
         window.dataLayer = window.dataLayer || [];
         function gtag() {
           dataLayer.push(arguments);
@@ -48,7 +51,7 @@
         gtag("js", new Date());
         gtag("config", "G-G0Y921MTGZ");
       } else {
-        console.log("Google Analystics disabled for Local Enviornment");
+        console.log("Google Analytics disabled for local enviornment.");
       }
     </script>
   </head>
@@ -68,7 +71,7 @@
         </button>
       </div>
 
-      <h1>--Spend-WISE</h1>
+      <h1>Spend-X</h1>
       <div class="bal-container">
         <div class="balance-box">
           Bal: <span id="availableBalance"></span> Rs
@@ -78,9 +81,8 @@
         </div>
       </div>
 
-      <a href="" class="awesome-month">Goodbye 2025 / Welcome 2026</a>
+      <!-- <a href="" class="awesome-month">Goodbye 2025 / Welcome 2026</a>-->
 
-      <br />
       <form id="expenseForm">
         <label for="userName">Name:</label>
         <input type="text" id="userName" name="userName" required />
@@ -135,16 +137,11 @@
         <a href="/Budget_Planner/budget_planner.html" class="Budget_Planner"
           >Budget Planner</a
         >
-        <a href="/Mini Games/mini_games.html" class="mini_games">Mini Games</a>
       </div>
     </div>
 
     <script src="index.js"></script>
-    <script
-      data-goatcounter="https://bharrat-gehlot.goatcounter.com/count"
-      async
-      src="//gc.zgo.at/count.js"
-    ></script>
+
     <script>
       // Set default date to today
       window.addEventListener("DOMContentLoaded", function () {
