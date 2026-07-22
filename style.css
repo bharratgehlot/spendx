@@ -101,7 +101,7 @@ select {
 }
 
 .submit-btn.submitted {
-  background: #28a745;
+  background: #360404de;
   cursor: not-allowed;
 }
 

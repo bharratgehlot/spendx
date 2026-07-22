@@ -23,4 +23,5 @@ Implement a auto email Features at the end of the day
 Add a setting for auto clear option at end of the monnth (requires auto email sending on)
 
 0.95 credit 
-
+2 code reviews
+1.35 credit

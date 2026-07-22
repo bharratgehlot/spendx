@@ -21,6 +21,7 @@ SpendX is a simple personal expense tracker designed to help individuals monitor
 - Hosting => Lightsail => 616 Rs / Three Months
 - Domain => mangotools.in => 589 Rs / One Year
 - Domain => spendwise.online => 217 Rs / One Year
+- Domain => spendx.in ==> rs /two year
 - TOTAL => 4803 Rs
 
 ## Deployment History
@@ -39,11 +40,9 @@ SpendX is a simple personal expense tracker designed to help individuals monitor
 
 ## App Versions:
 
-- Version - 2.0.0 BEFORE 31 July 2025
+- Version - 3.0.0 (July 2026)
 
-Now: After 1 August 2025
-
-
+Past Versions
 
 - Version: 2.1.0
 
@@ -85,10 +84,12 @@ Features added:
 6. Repititive Name input solved
 7. Fixed Several things
 
-- Current: 2.2.3
+- Version: 2.2.3
 
 1. Logo, App Icon, 
 2. Fresh 30 Backgrounds
 3. Add a new warning message that says updated to new vesion with link to logs
 4. Email Verification Logic In Settings Page
 5. Added catch the falling food mini game
+
+- Version: 3.0.0

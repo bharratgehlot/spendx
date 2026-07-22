@@ -1,7 +1,4 @@
-
-
 // ----- BLOCK 1 ----- Function to generate a random number ----- //
-
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -12,25 +9,26 @@ function getRandomInt(min, max) {
 
 // Run immediately
 
+refillDefaultValues();
 
-const storedUserName = localStorage.getItem('storedUserName');
-if (storedUserName) {
-  document.getElementById('userName').value = storedUserName;
+// NEW: Function
+
+function refillDefaultValues() {
+  const savedUserName = localStorage.getItem("storedUserName");
+
+  if (savedUserName) {
+    document.getElementById("userName").value = savedUserName;
+  }
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  document.getElementById("date").value = `${yyyy}-${mm}-${dd}`;
+
 }
-
-// Run After DOM is Loaded
-
-/* 
-document.addEventListener('DOMContentLoaded', function() {
-const storedUserName = localStorage.getItem('storedUserName');
-if (storedUserName) {
- document.getElementById('userName').value = storedUserName;
-}
-});
-*/
 
 // ----- BLOCK 3 ----- Background Image Changing & Arrays of the photo URLs ----- //  
-
 
 const photos = [
   'backgrounds/photo1.jpg',
@@ -120,16 +118,17 @@ function updateButtonState() {
 
 // ----- BLOCK 5 ----- Code for handling expenses, calculation ----- //  
 
+const submitButton = document.getElementById('submitButton');
 
-// ----- SUB-BLOCK  ----- Get available balance and total money spent from localstorage ----- //  
 
+// ----- BLOCK 5.1 ----- Get available balance and total money spent from localstorage ----- //  
 
 
 let availableBalance = localStorage.getItem('availableBalance');
 let totalMoneySpent = parseInt(localStorage.getItem('totalMoneySpent')) || 0;  //Money Spent Box
 
 
-// ----- SUB-BLOCK  ----- Initial Money Input or retrival from local storage ----- //  
+// ----- BLOCK 5.2 ----- Initial Money Input or retrival from local storage ----- //  
 
 
 if (availableBalance === null) {
@@ -165,14 +164,14 @@ if (availableBalance === null) {
 }
 
 
-// ----- SUB-BLOCK  ----- Update both available balance and total balance ----- //  
+// ----- BLOCK 5.3 ----- Update both available balance and total balance ----- //  
 
 
 document.getElementById('availableBalance').textContent = availableBalance; // Update available money box
 document.getElementById('totalSpentAmount').textContent = totalMoneySpent; // Update total money spent box
 
 
-// ----- SUB-BLOCK  ----- Table construction and adding values ----- //  
+// ----- BLOCK 5.4 ----- Table construction and adding values ----- //  
 
 
 document.getElementById('expenseForm').addEventListener('submit', function (e) {
@@ -215,55 +214,48 @@ document.getElementById('expenseForm').addEventListener('submit', function (e) {
 
   localStorage.setItem('storedUserName', userName);  // Will stored username for later use
 
-// ----- SUB-BLOCK  ----- Deduct spend amount from available balance ----- //  
+  // ----- BLOCK 5.5 ----- Deduct spend amount from available balance ----- //  
 
 
   availableBalance -= money;
   document.getElementById('availableBalance').textContent = availableBalance;
   localStorage.setItem('availableBalance', availableBalance);
 
-  
 
-// ----- SUB-BLOCK  ----- update totol money spent ----- //  
+
+  // ----- BLOCK 5.6  ----- update totol money spent ----- //  
 
   totalMoneySpent += money;
   document.getElementById('totalSpentAmount').textContent = totalMoneySpent; // Update total money spent box
 
 
-// ----- SUB-BLOCK  ----- Display success message & reset fields ----- //  
+  // ----- BLOCK 5.7 ----- Display success message & reset fields ----- //
 
-  document.getElementById('successMessage').style.display = 'block';
-  setTimeout(() => {
-    document.getElementById('successMessage').style.display = 'none'; // Hide success message after 3 seconds
-    window.location.reload(); // Disabled
-  }, 2000);
 
-  // Clear form fields after submission
   this.reset();
+  refillDefaultValues();
+
+  submitButton.disabled = true;
+  submitButton.textContent = "✓ Submitted";
+  submitButton.classList.add("submitted");
+
+  setTimeout(() => {
+    submitButton.disabled = false;
+    submitButton.textContent = "Add Expense";
+    submitButton.classList.remove("submitted");
+  }, 3000);
+
 });
 
-// This refill the storedUsername after form reset. If using page reload then dont use this
 
-/* 
-storedUserName = localStorage.getItem('storedUserName');
-if (storedUserName) {
-  document.getElementById('userName').value = storedUserName;
-}
-
-// Set today's date
-today = new Date().toISOString().split('T')[0];
-document.getElementById('date').value = today;
-
-*/
-
-// ----- SUB-BLOCK  ----- Store the updated total money spent in localStorage when the page unloads ----- //  
+// ----- BLOCK 5.8 ----- Store the updated total money spent in localStorage when the page unloads ----- //  
 
 window.addEventListener('beforeunload', function () {
   localStorage.setItem('totalMoneySpent', totalMoneySpent);
 });
 
 
-// ----- SUB-BLOCK  ----- Add event listener to clear total money spent when local storage is cleared ----- //  
+// ----- BLOCK 5.9 ----- Add event listener to clear total money spent when local storage is cleared ----- //  
 
 
 window.addEventListener('storage', function (e) {
@@ -274,6 +266,6 @@ window.addEventListener('storage', function (e) {
 });
 
 
-// ----- BLOCK 7 ----- ANYTHING ELSE ----- //  
+// ----- BLOCK 6 ----- ANYTHING ELSE ----- //  
 
 
