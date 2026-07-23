@@ -31,31 +31,31 @@ function refillDefaultValues() {
 // ----- BLOCK 3 ----- Background Image Changing & Arrays of the photo URLs ----- //  
 
 const photos = [
-  'backgrounds/photo1.jpg',
-  'backgrounds/photo2.jpg',
-  'backgrounds/photo3.jpg',
-  'backgrounds/photo4.jpg',
-  'backgrounds/photo5.jpg',
-  'backgrounds/photo6.jpg',
-  'backgrounds/photo7.jpg',
-  'backgrounds/photo8.jpg',
-  'backgrounds/photo9.jpg',
-  'backgrounds/photo10.jpg',
-  'backgrounds/photo11.jpg',
-  'backgrounds/photo12.jpg',
-  'backgrounds/photo13.jpg',
-  'backgrounds/photo14.jpg',
-  'backgrounds/photo15.jpg',
-  'backgrounds/photo16.jpg',
-  'backgrounds/photo17.jpg',
-  'backgrounds/photo18.jpg',
-  'backgrounds/photo19.jpg',
-  'backgrounds/photo20.jpg',
-  'backgrounds/photo21.jpg',
-  'backgrounds/photo22.jpg',
-  'backgrounds/photo23.jpg',
-  'backgrounds/photo24.jpg',
-  'backgrounds/photo25.jpg',
+  'assets/backgrounds/photo1.jpg',
+  'assets/backgrounds/photo2.jpg',
+  'assets/backgrounds/photo3.jpg',
+  'assets/backgrounds/photo4.jpg',
+  'assets/backgrounds/photo5.jpg',
+  'assets/backgrounds/photo6.jpg',
+  'assets/backgrounds/photo7.jpg',
+  'assets/backgrounds/photo8.jpg',
+  'assets/backgrounds/photo9.jpg',
+  'assets/backgrounds/photo10.jpg',
+  'assets/backgrounds/photo11.jpg',
+  'assets/backgrounds/photo12.jpg',
+  'assets/backgrounds/photo13.jpg',
+  'assets/backgrounds/photo14.jpg',
+  'assets/backgrounds/photo15.jpg',
+  'assets/backgrounds/photo16.jpg',
+  'assets/backgrounds/photo17.jpg',
+  'assets/backgrounds/photo18.jpg',
+  'assets/backgrounds/photo19.jpg',
+  'assets/backgrounds/photo20.jpg',
+  'assets/backgrounds/photo21.jpg',
+  'assets/backgrounds/photo22.jpg',
+  'assets/backgrounds/photo23.jpg',
+  'assets/backgrounds/photo24.jpg',
+  'assets/backgrounds/photo25.jpg',
 ];
 
 
@@ -223,7 +223,7 @@ document.getElementById('expenseForm').addEventListener('submit', function (e) {
 
 
 
-  // ----- BLOCK 5.6  ----- update totol money spent ----- //  
+  // ----- BLOCK 5.6  ----- update total money spent ----- //  
 
   totalMoneySpent += money;
   document.getElementById('totalSpentAmount').textContent = totalMoneySpent; // Update total money spent box
