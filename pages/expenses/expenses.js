@@ -1,13 +1,7 @@
-
-// ---BLOCK 1 ---- Retrieve available balance & saved wasted status ------- //
-
+// --- BLOCK 1 ---- Retrieve available balance & saved wasted status ------- //
 
 let availableBalance = localStorage.getItem('availableBalance');
-if (availableBalance !== null) {
-  document.getElementById('availableBalance').textContent = availableBalance;
-} else {
-  document.getElementById('availableBalance').textContent = 0;
-}
+document.getElementById('availableBalance').textContent = availableBalance ?? 0;
 
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 let wastedStatus = JSON.parse(localStorage.getItem('wastedStatus')) || {};
@@ -22,7 +16,6 @@ function saveExpenses() {
 
 
 // ---BLOCK 2 ---- wasted/not wasted function ------- //  
-
 
 function markAsWasted(row, expenseIndex) {
   row.classList.add('wasted-row');
@@ -69,10 +62,8 @@ expenses.forEach((expense, index) => {
   }
 });
 
-// <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/waste.png" alt="waste"/>
 
 // ---BLOCK 4 ---- function to get month number ------- //
-
 
 function getMonthName(monthNumber) {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -104,7 +95,6 @@ function clearLocalStorage() {
 
 // ---BLOCK 6 ---- Add and update balance function ------- //    
 
-
 function addBalance() {
   let input = prompt("How much ?");
   // Check for Null values (user cancelled) or empty strings
@@ -128,30 +118,7 @@ function addBalance() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // BLOCK 7 ------ Function for handling downloading PDF ------- //  
-
-
-
-
 
 function generatePDF() {
   const { jsPDF } = window.jspdf;
@@ -160,8 +127,6 @@ function generatePDF() {
   const wastedStatus = JSON.parse(localStorage.getItem('wastedStatus')) || {};
   const availableBalance = localStorage.getItem('availableBalance');
   const totalMoneySpent = localStorage.getItem('totalMoneySpent');
-
-
 
   doc.setFontSize(18);
   doc.setFont(undefined, 'bold');
@@ -176,8 +141,6 @@ function generatePDF() {
   doc.setFontSize(12);
   doc.setTextColor(0,100,0);
   doc.text(`Money Spent: ${totalMoneySpent} INR`, 140, 30);
-
-
 
   const tableHeader = ['#', 'Money (INR)', 'Description', 'Date', 'Location', 'Category', 'Wasted?'];
   const tableRows = expenses.map((expense, index) => {
@@ -194,26 +157,6 @@ function generatePDF() {
       outcome,
     ];
   });
-
-  /* 
-    doc.autoTable({
-      head: [tableHeader],
-      body: tableRows,
-      startY: 50,
-      styles: {
-        fontSize: 10,
-        cellPadding: 2,
-        fillColor: [240,240,240]
-      },
-      didDrawCell: (data) => {
-        if (wastedStatus[data.row.rowIndex - 1]) {
-          doc.setFillColor(255, 204, 204); // Light red color for wasted expenses
-          doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'FD');
-          doc.setFillColor(0, 0, 0); // Reset fill color to black
-        }
-      },
-    });
-  */
 
   doc.autoTable({
     head: [tableHeader],
@@ -233,25 +176,6 @@ function generatePDF() {
     },
     tableLineColor: [138, 96, 19], // Table border color
     tableLineWidth: 0.4,
-
-    /* 
-        didDrawCell: (data) => {
-          if (data.section === 'body' && wastedStatus[data.row.index]) {
-            doc.setFillColor(255, 204, 204); // #ffcccc for wasted rows
-            doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'FD');
-            doc.setTextColor(160, 0, 0); // #a00000 text color for wasted rows
-            doc.text(data.cell.text, data.cell.x + 2, data.cell.y + data.cell.height / 2 + 2);
-          }
-        },
-    
-        willDrawCell: (data) => {
-          if (data.section === 'body' && wastedStatus[data.row.index]) {
-            data.cell.styles.fillColor = [255, 204, 204];
-            data.cell.styles.textColor = [160, 0, 0];
-          }
-        },
-    
-    */
 
     didDrawCell: (data) => {
       if (data.section === 'body' && wastedStatus?.[data.row.index]) {
@@ -274,19 +198,13 @@ function generatePDF() {
         doc.text(text, textX, textY);
       }
     }
-
   });
 
   doc.save(`${getMonthName(new Date().getMonth()).toLocaleLowerCase()}-expense.pdf`);
 }
 
 
-
-
-
-
 // ---BLOCK 8 ---- Refer Button Functinality - Share on Whatsapp ------- //  
-
 
 function shareWhatsApp() {
   let message = "💰 *SpendWise* - Your Smart Expense Tracker! 🚀\n\n" +
