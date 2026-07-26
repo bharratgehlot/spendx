@@ -15,7 +15,7 @@ function saveExpenses() {
 }
 
 
-// ---BLOCK 2 ---- wasted/not wasted function ------- //  
+// --- BLOCK 2 ---- wasted/not wasted function ------- //  
 
 function markAsWasted(row, expenseIndex) {
   row.classList.add('wasted-row');
@@ -37,7 +37,6 @@ function handleWasteClick(event, expenseIndex) {
     markAsWasted(row, expenseIndex); // Mark the row as wasted
   }
 }
-
 
 
 // ---BLOCK 3 ---- Populate the table with expenses ------- //
@@ -69,7 +68,6 @@ function getMonthName(monthNumber) {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return months[monthNumber];
 }
-
 
 
 // ---BLOCK 5 ---- Clear Localstorage Function ------- //    
@@ -114,7 +112,6 @@ function addBalance() {
   document.getElementById('availableBalance').textContent = availableBalance;
   localStorage.setItem('availableBalance', availableBalance)
   location.reload();
-
 }
 
 
@@ -214,4 +211,4 @@ function shareWhatsApp() {
 
   let encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
-} 
+}
