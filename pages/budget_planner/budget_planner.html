@@ -1,29 +1,41 @@
+<!-- This page help users create and manage their monthly budgets -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create, set target, manage your monthly budget"
+    />
     <title>Budget Planner - SpendX</title>
     <link rel="stylesheet" href="budget_planner.css" />
 
-    <!-- Favicons -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="favicon/apple-touch-icon.png"
+      href="../../assets/favicon/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="favicon/favicon-32x32.png"
+      href="../../assets/favicon/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="favicon/favicon-16x16.png"
+      href="../../assets/favicon/favicon-16x16.png"
     />
+
+    <link
+      rel="mask-icon"
+      href="../../assets/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
   </head>
 
@@ -31,7 +43,7 @@
     <div class="container" id="container">
       <h1 style="text-align: center">Budget Planner</h1>
       <div class="btn-container">
-        <button id="newSection">New</button>
+        <button id="newBudget">New</button>
         <button>MagicButton</button>
         <button>My Budgets</button>
         <button id="clearStorage">Clear</button>
@@ -39,85 +51,49 @@
       <p style="text-align: center; color: white; background-color: crimson">
         Plan next month Budget
       </p>
+
       <button
-        class="past-expenses-btn"
+        class="go-home-btn"
         onclick="window.location.href='../../index.html' "
       >
         Go to Home
       </button>
     </div>
 
-    <script>
-      // Keep your default script
-      document
-        .getElementById("newSection")
-        .addEventListener("click", function () {
-          document.getElementById("formSection").classList.toggle("hidden");
-        });
+    <!-- Main content here -->
 
-      document
-        .getElementById("clearStorage")
-        .addEventListener("click", function () {
-          if (
-            confirm(
-              "Are you sure you want to clear all data? This action cannot be undone."
-            )
-          ) {
-            localStorage.removeItem("budgetSections");
-            renderSections(); // Refresh display
-          }
-        });
+    <!-- New Budget Model -->
+    <div class="model-overlay" id="modelOverlay">
+      <div class="model" id="budgetModel">
+        <button class="model-close" id="modelClose">x</button>
 
-      function renderSections() {
-        let sectionsContainer = document.getElementById("sectionsContainer");
-        sectionsContainer.innerHTML = "";
-        let sections = JSON.parse(localStorage.getItem("budgetSections")) || [];
+        <div id="step1">
+          <h2>New Budget</h2>
+          <p class="step-label">Step 1 of 2 — Basic Info</p>
 
-        sections.forEach((section, index) => {
-          let div = document.createElement("div");
-          div.className = "section";
-          div.style.backgroundColor = section.sectionColor;
-          div.innerHTML = `<h3>${section.sectionName}</h3><p>Daily Avg: ₹${(
-            section.subsections.reduce((sum, s) => sum + Number(s.price), 0) /
-            30
-          ).toFixed(2)}</p>`;
+          <label>Budget Name</label>
+          <input type="text" id="budgetName" placeholder="e.g. June Budget" />
 
-          let expanded = false;
-          div.addEventListener("click", function () {
-            if (!expanded) {
-              let totalSpent = section.subsections.reduce(
-                (sum, s) => sum + Number(s.price),
-                0
-              );
-              div.innerHTML = `<h3>${section.sectionName}</h3>
-              <p><strong>Month:</strong> ${section.sectionDate}</p>
-              <p><strong>Target:</strong> ₹${section.targetAmount}</p>
-              <p><strong>Total Spent:</strong> ₹${totalSpent}</p>
-              <h4>Subsections:</h4>
-              ${section.subsections
-                .map((s) => `<p>${s.name}: ₹${s.price}</p>`)
-                .join("")}
-              <p><strong>Daily Avg:</strong> ₹${(totalSpent / 30).toFixed(
-                2
-              )}</p>`;
-              expanded = true;
-            } else {
-              div.innerHTML = `<h3>${section.sectionName}</h3><p>Daily Avg: ₹${(
-                section.subsections.reduce(
-                  (sum, s) => sum + Number(s.price),
-                  0
-                ) / 30
-              ).toFixed(2)}</p>`;
-              expanded = false;
-            }
-          });
+          <label>Budget Month</label>
+          <input type="month" id="budgetMonth" />
 
-          sectionsContainer.appendChild(div);
-        });
-      }
+          <label>Target Amount (₹)</label>
+          <input
+            type="number"
+            id="targetAmount"
+            placeholder="e.g. 15,000rs"
+            min="1000"
+          />
 
-      renderSections();
-    </script>
+          <p class="error-msg" id="step1Error"></p>
+          <button class="model-btn" id="nextBtn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content ends -->
+
+    <!-- Google Analytics (disabled on localhost) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-G0Y921MTGZ"
@@ -139,5 +115,7 @@
         console.log("Google Analystics disabled for Local Enviornment");
       }
     </script>
+
+    <script src="budget_planner.js"></script>
   </body>
 </html>
